@@ -1,0 +1,6 @@
+.vscode/
+__pycache__/
+
+*.cir
+*.code-workspace
+*.raw

@@ -1,0 +1,5 @@
+= Spice Mill v0.1.0 ============================================================
+Added:
+  - Ngspice ASCII raw file input option.
+  - Ngspice ASCII raw file parser.
+  - Curve plotter.
