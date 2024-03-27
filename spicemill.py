@@ -43,17 +43,21 @@ if __name__ == "__main__":
 
   time = rawFile.get_time_data()
   curves = rawFile.get_curve_data()
+  nCurves = len(curves)
 
-  figure, axes = m_pyplot.subplots(len(curves))
+  if nCurves > 0:
+    figure, axes = m_pyplot.subplots(nCurves)
 
-  figure.suptitle(rawFile.title+" ["+rawFile.plotName+"]")
+    figure.suptitle(rawFile.title+" ["+rawFile.plotName+"]")
 
-  for i in range(len(curves)):
-    axes[i].plot(time, curves[i]["data"])
-    axes[i].set_ylabel(curves[i]["name"])
-    axes[i].set_xlabel("Time [s]")
-    axes[i].grid()
+    for i in range(len(curves)):
+      axes[i].plot(time, curves[i]["data"])
+      axes[i].set_ylabel(curves[i]["name"])
+      axes[i].set_xlabel("Time [s]")
+      axes[i].grid()
 
-  figure.tight_layout()
+    figure.tight_layout()
 
-  m_pyplot.show()
+    m_pyplot.show()
+  else:
+    print("No curves to show.")
