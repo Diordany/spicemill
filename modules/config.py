@@ -23,9 +23,15 @@
 class Config:
   def __init__(self):
     self.rawFileName = None
+    self.vars = None
 
   def read_args(self, p_parser):
     self.rawFileName = p_parser.get_option("raw")
 
     if self.rawFileName == None:
       self.rawFileName = "data.raw"
+
+    self.vars = p_parser.get_list_option("vars", ";")
+
+    if self.vars == None:
+      self.vars = []

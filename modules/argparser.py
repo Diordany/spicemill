@@ -26,6 +26,12 @@ class ArgParser:
     self.options = {}
     self.optionPrefix = "--"
 
+  def get_list_option(self, p_name, p_delimiter):
+    if not p_name in self.options:
+      return None
+
+    return self.options[p_name].split(p_delimiter)
+
   def get_option(self, p_name):
     if p_name in self.options:
       return self.options[p_name]

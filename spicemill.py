@@ -42,7 +42,8 @@ if __name__ == "__main__":
   rawFile.close()
 
   time = rawFile.get_time_data()
-  curves = rawFile.get_curve_data()
+  curves = rawFile.get_curve_data(config.vars)
+
   nCurves = len(curves)
 
   if nCurves > 0:
@@ -50,11 +51,17 @@ if __name__ == "__main__":
 
     figure.suptitle(rawFile.title+" ["+rawFile.plotName+"]")
 
-    for i in range(len(curves)):
-      axes[i].plot(time, curves[i]["data"])
-      axes[i].set_ylabel(curves[i]["name"])
-      axes[i].set_xlabel("Time [s]")
-      axes[i].grid()
+    for i in range(nCurves):
+      if nCurves > 1:
+        axes[i].plot(time, curves[i]["data"])
+        axes[i].set_ylabel(curves[i]["name"])
+        axes[i].set_xlabel("Time [s]")
+        axes[i].grid()
+      else:
+        axes.plot(time, curves[i]["data"])
+        axes.set_ylabel(curves[i]["name"])
+        axes.set_xlabel("Time [s]")
+        axes.grid()
 
     figure.tight_layout()
 

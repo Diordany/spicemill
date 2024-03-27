@@ -47,15 +47,15 @@ class RawFile:
   def close(self):
     self.file.close()
 
-  def get_curve_data(self):
+  def get_curve_data(self, p_vars):
     data = []
+
+    nVars = len(p_vars)
 
     for var in self.vars:
       if var["type"] != "time":
-        data.append(var)
-
-    if len(data) == 0:
-      m_sys.exit("No curve data found.")
+        if (nVars == 0) or (var["name"] in p_vars):
+          data.append(var)
 
     return data
 
