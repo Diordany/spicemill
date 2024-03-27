@@ -31,18 +31,14 @@ from modules.rawfile import RawFile
 
 if __name__ == "__main__":
   argParser = ArgParser()
-  config = Config()
-
   argParser.parse(m_sys.argv)
 
+  config = Config()
   config.read_args(argParser)
 
   rawFile = RawFile(config.rawFileName)
-
   rawFile.open()
-
   rawFile.read()
-
   rawFile.close()
 
   time = rawFile.get_time_data()
