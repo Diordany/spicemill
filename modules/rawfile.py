@@ -59,9 +59,6 @@ class RawFile:
 
     return data
 
-  def get_plot_name(self):
-    return self.plotName
-
   def get_time_data(self):
     for var in self.vars:
       if var["type"] == "time":
@@ -69,9 +66,6 @@ class RawFile:
 
     m_sys.exit("Couldn't find the time variable.")
 
-  def get_title(self):
-    return self.title
-  
   def open(self):
     if not m_os.path.isfile(self.fileName):
       m_sys.exit("The file '"+self.fileName+"' does not exist.")

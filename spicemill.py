@@ -50,7 +50,7 @@ if __name__ == "__main__":
 
   figure, axes = m_pyplot.subplots(len(curves))
 
-  figure.suptitle(rawFile.get_title()+" ["+rawFile.get_plot_name()+"]")
+  figure.suptitle(rawFile.title+" ["+rawFile.plotName+"]")
 
   for i in range(len(curves)):
     axes[i].plot(time, curves[i]["data"])
