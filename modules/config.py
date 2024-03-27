@@ -24,11 +24,8 @@ class Config:
   def __init__(self):
     rawFileName = None
 
-  def get_raw_file_name(self):
-    if self.rawFileName != None:
-      return self.rawFileName
-    else:
-      return "data.raw"
-
   def read_args(self, p_parser):
     self.rawFileName = p_parser.get_option("raw")
+
+    if self.rawFileName == None:
+      self.rawFileName = "data.raw"

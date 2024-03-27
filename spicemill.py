@@ -37,9 +37,7 @@ if __name__ == "__main__":
 
   config.read_args(argParser)
 
-  fileName = config.get_raw_file_name()
-
-  rawFile = RawFile(fileName)
+  rawFile = RawFile(config.rawFileName)
 
   rawFile.open()
 
