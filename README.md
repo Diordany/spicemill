@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-I'm working on Spice Mill to aid me in circuit analysis. Spice Mill focuses primarily on post processing ASCII raw files generated Ngspice. This is intended for my personal use, but I'm releasing it for anyone who's interested.
+I'm working on Spice Mill to aid me in circuit analysis. Spice Mill focuses primarily on post processing ASCII raw files generated Ngspice. This is intended for my personal use, but I'm releasing it for anyone who's interested. Keep in mind that everything here is subject to change.
 
 
 ## Generating Test Data with Ngspice
