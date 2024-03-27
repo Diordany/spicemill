@@ -39,3 +39,9 @@ python spicemill.py --raw <raw_file>
 If no filename was given with the `--raw` option, it defaults to `data.raw`.
 
 ![plot](docs/img/plot.png)
+
+To plot specific variables, use the `--vars` option. The variable names should be separated by a semicolon (;).
+
+```
+python spicemill.py --vars "<var_1>;<var_2>;<var_n>"
+```

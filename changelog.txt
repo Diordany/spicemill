@@ -1,4 +1,8 @@
-= Spice Mill v0.1.0 ============================================================
+= Spice Mill v0.2.0 (2024/03/27) ===============================================
+Added:
+  - Ability to plot specific variables.
+
+= Spice Mill v0.1.0 (2024/03/26) ===============================================
 Added:
   - Ngspice ASCII raw file input option.
   - Ngspice ASCII raw file parser.
