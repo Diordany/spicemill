@@ -22,7 +22,7 @@
 
 class Config:
   def __init__(self):
-    rawFileName = None
+    self.rawFileName = None
 
   def read_args(self, p_parser):
     self.rawFileName = p_parser.get_option("raw")
