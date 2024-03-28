@@ -29,6 +29,9 @@ from modules.argparser import ArgParser
 from modules.config import Config
 from modules.rawfile import RawFile
 
+def on_resize(p_event):
+  p_event.canvas.figure.tight_layout()
+
 if __name__ == "__main__":
   argParser = ArgParser()
   argParser.parse(m_sys.argv)
@@ -64,6 +67,8 @@ if __name__ == "__main__":
         axes.grid()
 
     figure.tight_layout()
+
+    figure.canvas.mpl_connect("resize_event", on_resize)
 
     m_pyplot.show()
   else:
