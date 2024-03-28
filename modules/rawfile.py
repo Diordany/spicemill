@@ -52,9 +52,16 @@ class RawFile:
 
     nVars = len(p_vars)
 
-    for var in self.vars:
-      if var["type"] != "time":
-        if (nVars == 0) or (var["name"] in p_vars):
+    if nVars > 0:
+      for varName in p_vars:
+        var = self.get_var(varName)
+
+        if var != None:
+          if var["type"] != "time":
+            data.append(var)
+    else:
+      for var in self.vars:
+        if var["type"] != "time":
           data.append(var)
 
     return data
@@ -65,6 +72,13 @@ class RawFile:
         return var["data"]
 
     m_sys.exit("Couldn't find the time variable.")
+  
+  def get_var(self, p_varName):
+    for var in self.vars:
+      if var["name"] == p_varName:
+        return var
+      
+    return None
 
   def open(self):
     if not m_os.path.isfile(self.fileName):
