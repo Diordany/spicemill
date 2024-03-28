@@ -1,3 +1,10 @@
+= Spice Mill v0.3.0 (2024/03/28) ===============================================
+Added:
+  - Automatically fits the graphs on canvas resize.
+Changed:
+  - Variables provided with the vars option will now be loaded in order from
+    left to right.
+
 = Spice Mill v0.2.0 (2024/03/27) ===============================================
 Added:
   - Ability to plot specific variables.
