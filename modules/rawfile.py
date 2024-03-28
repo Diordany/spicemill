@@ -34,7 +34,7 @@ class RawFile:
     self.varCount = None
     self.dataCount = None
 
-    self.vars = []
+    self.vars = {}
 
   def check_header_marker(self, p_label):
     marker = p_label+":"
@@ -54,31 +54,22 @@ class RawFile:
 
     if nVars > 0:
       for varName in p_vars:
-        var = self.get_var(varName)
-
-        if var != None:
-          if var["type"] != "time":
-            data.append(var)
+        if varName in self.vars:
+          if self.vars[varName]["type"] != "time":
+            data.append({"name": varName, "type": self.vars[varName]["type"], "data": self.vars[varName]["data"]})
     else:
-      for var in self.vars:
-        if var["type"] != "time":
-          data.append(var)
+      for varName in self.vars:
+        if self.vars[varName]["type"] != "time":
+          data.append({"name": varName, "type": self.vars[varName]["type"], "data": self.vars[varName]["data"]})
 
     return data
 
   def get_time_data(self):
-    for var in self.vars:
-      if var["type"] == "time":
-        return var["data"]
+    for varName in self.vars:
+      if (varName == "time") and (self.vars[varName]["type"] == "time"):
+        return self.vars[varName]["data"]
 
     m_sys.exit("Couldn't find the time variable.")
-  
-  def get_var(self, p_varName):
-    for var in self.vars:
-      if var["name"] == p_varName:
-        return var
-      
-    return None
 
   def open(self):
     if not m_os.path.isfile(self.fileName):
@@ -94,12 +85,12 @@ class RawFile:
     self.check_header_marker("Values")
 
     for i in range(self.dataCount):
-      for j in range(len(self.vars)):
-        if j == 0:
+      for varName in self.vars:
+        if (varName == "time") and (self.vars[varName]["type"] == "time"):
           prefix = str(i)+"\t\t"
-          self.vars[j]["data"].append(float(self.file.readline().strip()[len(prefix):]))
+          self.vars[varName]["data"].append(float(self.file.readline().strip()[len(prefix):]))
         else:
-          self.vars[j]["data"].append(float(self.file.readline().strip()))
+          self.vars[varName]["data"].append(float(self.file.readline().strip()))
 
   def read_header(self):
     self.title = self.read_header_line("Title")
@@ -125,4 +116,4 @@ class RawFile:
 
     for i in range(self.varCount):
       var = self.file.readline().strip().split("\t")
-      self.vars.append({ "name": var[1], "type": var[2], "data": [] })
+      self.vars[var[1]] = {"type": var[2], "data": []}
